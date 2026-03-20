@@ -1,12 +1,21 @@
 package com.example.MyDemoProject.controller;
 
 import com.example.MyDemoProject.dto.OrderDto;
+import com.example.MyDemoProject.dto.Todo;
 import com.example.MyDemoProject.records.OrderRecord;
+import com.example.MyDemoProject.service.MyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // to make class controller as well component to be scanned by spring
 public class MyController {
+
+    private final MyService myService;
+
+    public MyController(MyService myService) {
+        this.myService = myService;
+    }
+
 
     @GetMapping("/hello")// for get http method
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -37,6 +46,11 @@ public class MyController {
     @GetMapping("/hello/param")
     public String paramVr(@RequestParam String userName,@RequestParam String email){ //requestparam is used to get name from the url passed by user in param
         return "my param value is :"+ userName + " " +email;
+    }
+
+    @GetMapping("/restClient/getData")
+    public Todo getData(){
+       return myService.getData();
     }
 
 
