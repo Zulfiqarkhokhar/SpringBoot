@@ -35,8 +35,8 @@ public class MyController {
     }
 
     @GetMapping("/hello/param")
-    public String paramVr(@RequestParam String userName){ //requestparam is used to get name from the url passed by user in param
-        return "my param value is :"+ userName;
+    public String paramVr(@RequestParam String userName,@RequestParam String email){ //requestparam is used to get name from the url passed by user in param
+        return "my param value is :"+ userName + " " +email;
     }
 
 
