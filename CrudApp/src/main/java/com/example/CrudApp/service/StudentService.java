@@ -31,7 +31,7 @@ public class StudentService {
 
     public Student updateStudent(Long id,Student student) {
         Student std = studentRepository.findById(id).orElseThrow(()->new RuntimeException("Student Not Found"));
-        
+
         std.setName(student.getName());
         std.setEmail(student.getEmail());
         studentRepository.save(std);
