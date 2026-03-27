@@ -1,7 +1,7 @@
 // src/components/dashboard/SummaryCard.jsx
 import React from 'react';
 
-const SummaryCard = ({ title, value, icon: Icon, color = 'blue' }) => {
+const SummaryCard = ({ title, value, icon: color = 'blue' }) => {
   const colors = {
     blue: 'bg-blue-500',
     green: 'bg-green-500',
