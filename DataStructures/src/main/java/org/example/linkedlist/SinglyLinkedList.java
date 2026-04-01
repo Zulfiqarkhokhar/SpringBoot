@@ -84,10 +84,10 @@ public class SinglyLinkedList {
 
     //print list
     public void traverseNodes(){
-        ListNode cur = head;
-        while (cur != null){
-            System.out.print(cur.data+" --> ");
-            cur = cur.next;
+        ListNode current = head;
+        while (current != null){
+            System.out.print(current.data+" --> ");
+            current = current.next;
         }
         System.out.println("Null");
     }
