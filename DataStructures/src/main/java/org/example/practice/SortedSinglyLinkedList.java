@@ -25,11 +25,52 @@ public class SortedSinglyLinkedList {
        NodeList n5 = new NodeList(4);
        NodeList n6 = new NodeList(4);
 
+       SortedSinglyLinkedList sll = new SortedSinglyLinkedList();
+
+       sll.addAtEnd(n1);
+       sll.addAtEnd(n2);
+       sll.addAtEnd(n3);
+       sll.addAtEnd(n4);
+       sll.addAtEnd(n5);
+       sll.addAtEnd(n6);
+
+       sll.printList();
+
+       sll.removeDuplicate();
+
+       sll.printList();
 
 
     }
 
     public void addAtEnd(NodeList newNode){
+        if(head == null){
+            head = newNode;
+            return;
+        }
        NodeList current = head;
+       while(current.next != null){
+           current = current.next;
+       }
+       current.next = newNode;
+    }
+
+    public void printList(){
+       NodeList current = head;
+       while (current != null){
+           System.out.print(current.data+" --> ");
+           current = current.next;
+       }
+        System.out.println("null");
+    }
+
+    public void removeDuplicate(){
+       NodeList current = head;
+       while (current != null && current.next != null){
+           if(current.data == current.next.data){
+               current.next = current.next.next;
+           }
+           current = current.next;
+       }
     }
 }
