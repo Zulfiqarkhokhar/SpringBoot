@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
@@ -18,25 +20,35 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/api/users")
+    @GetMapping
     public ResponseEntity<List<User>> getAllUsers(){
         return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
-    @PostMapping("/api/users")
+    @PostMapping
     public ResponseEntity<String> createUser(@RequestBody User user){
         userService.createUser(user);
         return new ResponseEntity<>("User Created Successfully",HttpStatus.OK);
     }
 
-    @GetMapping("/api/users/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id){
-        User user = userService.getUserById(id);
-        if (user ==  null){
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<User>> getUserById(@PathVariable Long id){
+        Optional<User> user = userService.getUserById(id);
+        if (user.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(userService.getUserById(id),HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
+
+        Optional<User> oldUser = userService.getUserById(id);
+        if(oldUser.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(userService.updateUser(id,user),HttpStatus.OK);
     }
 
 }
