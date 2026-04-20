@@ -1,9 +1,6 @@
 package com.app.ecom.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,5 +18,19 @@ public class User {
     private String firstName;
 
     private String lastName;
+
+    private String email;
+
+    private String phone;
+
+    @Enumerated(EnumType.STRING)
+    private UserRole role = UserRole.CUSTOMER;
+
+    @PrePersist
+    public void prePersist() {
+        if (role == null) {
+            role = UserRole.CUSTOMER;
+        }
+    }
 
 }
