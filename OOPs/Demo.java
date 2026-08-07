@@ -24,12 +24,12 @@ public class Demo{
 }
 
 class Student{
-    String name;
+    String name; // intance variables
     int age;
     int rollNo;
     String college;
 
-    void markAttendence(){
+    void markAttendence(){ // instance methods
         System.err.println("Attendenc marked by "+ name);
     }
 
