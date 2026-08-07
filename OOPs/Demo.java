@@ -1,3 +1,4 @@
+// class and objects OOPs
 public class Demo{
     public static void main(String[] args) {
         
