@@ -4,6 +4,7 @@ public class Abstraction {
 
         car.start();
         car.stop();
+        car.print();
     }
 }
 abstract class Vehicle{
@@ -11,15 +12,23 @@ abstract class Vehicle{
     String model;
     int mileage;
 
-    void start(){};
-    void stop(){};
+    void print(){
+        System.out.println("This is abstract class");
+    }
+
+    abstract void start();
+    abstract void stop();
 
 }
 
 class Car extends Vehicle{
+
+    @Override
     void start(){
         System.out.println("Engine start");
     }
+
+    @Override
     void stop(){
         System.out.println("Engine stops");
     }
