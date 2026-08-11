@@ -34,3 +34,7 @@ class Car extends Vehicle{
     }
 }
 
+// Q1. Can abstract class have constructor -> yes
+// Q2. Can abstract class be final -> no
+// Q3. Can abstract class have static methods -> yes
+
